@@ -5,12 +5,14 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: 'AIzaSyAsVSLJ4w4h8r2_Siw1P1iduqIXsreDiNM',
-    authDomain: 'test-7a916.firebaseapp.com',
-    projectId: 'test-7a916',
-    storageBucket: 'test-7a916.appspot.com',
-    messagingSenderId: '4779783242',
-    appId: '1:4779783242:web:43779e4b1abf6c9c91a2b3',
+    apiKey: "AIzaSyAGn7Cij9a_a6idJAAt9mCgMtUnV3xcX1I",
+    authDomain: "dream4-34466.firebaseapp.com",
+    databaseURL: "https://dream4-34466-default-rtdb.europe-west1.firebasedatabase.app",
+    projectId: "dream4-34466",
+    storageBucket: "dream4-34466.appspot.com",
+    messagingSenderId: "464520261302",
+    appId: "1:464520261302:web:2e9c3935be777f81c68017",
+    measurementId: "G-L36B9FPEDD"
   },
 };
 
