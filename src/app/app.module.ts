@@ -21,7 +21,11 @@ import { AppRoutingModule } from './app-routing.module';
 
 // service
 import { AuthService } from './shared/services/auth.service';
+import { HomeComponent } from './components/home/home.component';
 
+
+//Maps
+import { GoogleMapsModule } from '@angular/google-maps'
 
 @NgModule({
   declarations: [
@@ -31,6 +35,7 @@ import { AuthService } from './shared/services/auth.service';
     SignUpComponent,
     ForgotPasswordComponent,
     VerifyEmailComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,6 +44,7 @@ import { AuthService } from './shared/services/auth.service';
     AngularFirestoreModule,
     AngularFireStorageModule,
     AngularFireDatabaseModule,
+    GoogleMapsModule,
     AppRoutingModule,
   ],
   providers: [AuthService],
