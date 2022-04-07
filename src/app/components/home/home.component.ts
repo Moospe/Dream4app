@@ -8,8 +8,7 @@ import { GoogleMap, MapInfoWindow, MapMarker } from '@angular/google-maps';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  @ViewChild(GoogleMap, { static: false }) map!: GoogleMap
-  @ViewChild(MapInfoWindow, { static: false }) info!: MapInfoWindow
+  @ViewChild(MapInfoWindow) infoWindow!: MapInfoWindow;
 
   zoom = 12;
   center!: google.maps.LatLngLiteral;
@@ -21,8 +20,8 @@ export class HomeComponent implements OnInit {
     maxZoom: 15,
     minZoom: 8,
   }
-  markers: Array<any> = [];
-  infoContent = '';
+  // markers: google.maps.Marker[] = [];
+  // infoContent = '';
 
   ngOnInit() {
     navigator.geolocation.getCurrentPosition((position) => {
@@ -33,42 +32,32 @@ export class HomeComponent implements OnInit {
     })
   }
 
-  zoomIn() {
-    if (this.zoom < this.options.maxZoom!) this.zoom++
-  }
+  // zoomIn() {
+  //   if (this.zoom < this.options.maxZoom!) this.zoom++
+  // }
 
-  zoomOut() {
-    if (this.zoom > this.options.minZoom!) this.zoom--
-  }
+  // zoomOut() {
+  //   if (this.zoom > this.options.minZoom!) this.zoom--
+  // }
 
-  click(event: google.maps.MapMouseEvent) {
-    console.log(event)
-  }
+  // click(event: google.maps.MapMouseEvent) {
+  //   console.log(event)
+  // }
 
-  logCenter() {
-    console.log(JSON.stringify(this.map.getCenter()))
-  }
+  // logCenter() {
+  //   console.log(JSON.stringify(this.map.getCenter()))
+  // }
 
-  addMarker() {
-    this.markers.push({
-      position: {
-        lat: this.center.lat + ((Math.random() - 0.5) * 2) / 10,
-        lng: this.center.lng + ((Math.random() - 0.5) * 2) / 10,
-      },
-      label: {
-        color: 'red',
-        text: 'Marker label ' + (this.markers.length + 1),
-      },
-      title: 'Marker title ' + (this.markers.length + 1),
-      info: 'Marker info ' + (this.markers.length + 1),
-      options: {
-        animation: google.maps.Animation.BOUNCE,
-      },
-    })
-  }
+  markerOptions: google.maps.MarkerOptions = {draggable: false};
+  markerPositions: google.maps.LatLngLiteral[] = [];
 
-  openInfo(marker: MapMarker, content: string) {
-    this.infoContent = content
-    this.info.open(marker)
+  addMarker(event: google.maps.MapMouseEvent) {
+    if(!!event.latLng) {
+      this.markerPositions.push(event.latLng.toJSON());
+    }
+  }
+  
+  openInfoWindow(marker: MapMarker) {
+    this.infoWindow.open(marker);
   }
 }
