@@ -25,7 +25,8 @@ import { HomeComponent } from './components/home/home.component';
 
 
 //Maps
-import { GoogleMapsModule } from '@angular/google-maps'
+import { GoogleMapsModule } from '@angular/google-maps';
+import { HeaderComponent } from './template/header/header.component'
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { GoogleMapsModule } from '@angular/google-maps'
     ForgotPasswordComponent,
     VerifyEmailComponent,
     HomeComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,

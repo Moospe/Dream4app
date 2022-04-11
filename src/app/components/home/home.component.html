@@ -1,5 +1,7 @@
+<app-header></app-header>
+
 <google-map #map 
-height="80%"
+height="100%"
 width="100%" 
 [zoom]="zoom" 
 [center]="center" 
@@ -11,7 +13,7 @@ width="100%"
   [position]="markerPosition" 
   [options]="markerOptions"
   (mapClick)="openInfoWindow(marker)"></map-marker>
-  <map-info-window>Info Window content</map-info-window>
+  <map-info-window><img src="/assets/CarnavalMatskoGif.gif" alt="this slowpoke moves"  width="500px" /></map-info-window>
 
 </google-map>
 
