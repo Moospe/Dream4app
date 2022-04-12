@@ -26,7 +26,16 @@ import { HomeComponent } from './components/home/home.component';
 
 //Maps
 import { GoogleMapsModule } from '@angular/google-maps';
-import { HeaderComponent } from './template/header/header.component'
+
+//Material
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { HeaderComponent } from './template/header/header.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +57,13 @@ import { HeaderComponent } from './template/header/header.component'
     AngularFireDatabaseModule,
     GoogleMapsModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule,
   ],
   providers: [AuthService],
   bootstrap: [AppComponent],

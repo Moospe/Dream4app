@@ -662,3 +662,20 @@ body .table thead th {
     display: none;
   }
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.fx-spacer {
+  flex: 1 1 auto;
+}
+
+.sidenav {
+  min-width: 200px;
+}
+
+.matNav {
+  position: absolute; 
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.1);
+}

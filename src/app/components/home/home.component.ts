@@ -1,6 +1,7 @@
 import { ArrayType } from '@angular/compiler';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { GoogleMap, MapInfoWindow, MapMarker } from '@angular/google-maps';
+import { HostListener } from "@angular/core";
 
 @Component({
   selector: 'app-home',
@@ -20,8 +21,14 @@ export class HomeComponent implements OnInit {
     maxZoom: 15,
     minZoom: 8,
   }
+  screenHeight: number | undefined;
+  screenWidth: number | undefined;
   // markers: google.maps.Marker[] = [];
   // infoContent = '';
+
+  constructor() {
+    this.onResize();
+  }   
 
   ngOnInit() {
     navigator.geolocation.getCurrentPosition((position) => {
@@ -30,6 +37,12 @@ export class HomeComponent implements OnInit {
         lng: position.coords.longitude,
       }
     })
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(_event?: any) {
+     this.screenHeight = window.innerHeight;
+     this.screenWidth = window.innerWidth;
   }
 
   // zoomIn() {
