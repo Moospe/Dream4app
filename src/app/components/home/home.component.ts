@@ -2,6 +2,7 @@ import { ArrayType } from '@angular/compiler';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { GoogleMap, MapInfoWindow, MapMarker } from '@angular/google-maps';
 import { HostListener } from "@angular/core";
+import { Marker } from 'src/app/shared/interfaces/marker';
 
 @Component({
   selector: 'app-home',
@@ -16,15 +17,16 @@ export class HomeComponent implements OnInit {
   options: google.maps.MapOptions = {
     zoomControl: false,
     scrollwheel: false,
-    disableDoubleClickZoom: true,
+    disableDoubleClickZoom: false,
+    disableDefaultUI: true,
     mapTypeId: 'hybrid',
     maxZoom: 15,
     minZoom: 8,
   }
   screenHeight: number | undefined;
   screenWidth: number | undefined;
-  // markers: google.maps.Marker[] = [];
-  // infoContent = '';
+  markers: Marker[] = [];
+  infoContent = '';
 
   constructor() {
     this.onResize();
@@ -37,6 +39,14 @@ export class HomeComponent implements OnInit {
         lng: position.coords.longitude,
       }
     })
+    this.markers.push({
+      markerPosition: {lat: 50.8380985302848, lng: 5.702648882018022},
+      markerOptions: {draggable: false},
+      info: {
+        imgUrl: "/assets/CarnavalMatskoGif.gif",
+    }
+    });
+  
   }
 
   @HostListener('window:resize', ['$event'])
@@ -61,16 +71,18 @@ export class HomeComponent implements OnInit {
   //   console.log(JSON.stringify(this.map.getCenter()))
   // }
 
-  markerOptions: google.maps.MarkerOptions = {draggable: false};
-  markerPositions: google.maps.LatLngLiteral[] = [];
+  // markerOptions: google.maps.MarkerOptions = {draggable: false};
+  // markerPositions: google.maps.LatLngLiteral[] = [];
 
-  addMarker(event: google.maps.MapMouseEvent) {
-    if(!!event.latLng) {
-      this.markerPositions.push(event.latLng.toJSON());
-    }
-  }
+  // addMarker(event: google.maps.MapMouseEvent) {
+  //   if(!!event.latLng) {
+  //     console.log(event.latLng.toJSON());
+      
+  //   }
+  // }
   
-  openInfoWindow(marker: MapMarker) {
+  openInfoWindow(marker: MapMarker, mark: Marker) {
+    this.infoContent = mark.info.imgUrl;
     this.infoWindow.open(marker);
   }
 }

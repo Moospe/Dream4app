@@ -4,14 +4,14 @@ width="100%"
 [zoom]="zoom" 
 [center]="center" 
 [options]="options"
-(mapClick)="addMarker($event)">
+>
   
   <map-marker #marker="mapMarker"
-  *ngFor="let markerPosition of markerPositions" 
-  [position]="markerPosition" 
-  [options]="markerOptions"
-  (mapClick)="openInfoWindow(marker)"></map-marker>
-  <map-info-window><img src="/assets/CarnavalMatskoGif.gif" alt="this slowpoke moves"  width="500px" /></map-info-window>
+  *ngFor="let mark of markers" 
+  [position]="mark.markerPosition" 
+  [options]="mark.markerOptions"
+  (mapClick)="openInfoWindow(marker, mark)"></map-marker>
+  <map-info-window><img src="{{ infoContent }}" alt="this slowpoke moves"  width="500px" /></map-info-window>
 
 </google-map>
 
